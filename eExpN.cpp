@@ -1,3 +1,5 @@
+// não to conseguindo mostrar com a precisao que quero por alguma razao
+
 #include <iostream>
 #include <cmath>
 using namespace std;
