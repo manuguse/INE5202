@@ -1,6 +1,10 @@
 import static java.lang.Math.*;
 
 public class RootFinderMethods {
+
+    private static void printResult(double result, int iterations, long elapsedTime) {
+        System.out.printf("iterations: %d\nresult: %.10f\nelapsed time: %d ns\n", iterations, result, elapsedTime);
+    }
     private static double equation(double x) {
         // return exp(x) * sin(x) - 1;
         return exp(x) - 2*cos(x);
@@ -9,6 +13,10 @@ public class RootFinderMethods {
     private static double derivative(double x) {
         // return exp(x) * (sin(x) + cos(x));
         return exp(x) + 2*sin(x);
+    }
+
+    private static double secantEquation(double x0, double x1) {
+        return (x1 - x0) / (equation(x1) - equation(x0));
     }
 
     public static void bisectionMethod(double a, double b, double precision) {
@@ -24,7 +32,7 @@ public class RootFinderMethods {
             }
             xm = (a + b) / 2;
         }
-        System.out.printf("iterations: %d\nresult: %.10f\nelapsed time: %d ns\n", iterations, xm, System.nanoTime() - start);
+        printResult(xm, iterations, System.nanoTime() - start);
         // return xm;
     }
 
@@ -41,7 +49,7 @@ public class RootFinderMethods {
             }
             xk = (a * equation(b) - b * equation(a)) / (equation(b) - equation(a));
         }
-        System.out.printf("iterations: %d\nresult: %.10f\nelapsed time: %d ns\n", iterations, xk, System.nanoTime() - start);
+        printResult(xk, iterations, System.nanoTime() - start);
     }
 
     // para o xk precisamos de algo perto da raiz ≥ como fazer isso?
@@ -54,7 +62,22 @@ public class RootFinderMethods {
             iterations++;
             xk = xk - equation(xk) / derivative(xk);
         }
-        System.out.printf("iterations: %d\nresult: %.10f\nelapsed time: %d ns\n", iterations, xk, System.nanoTime() - start);
+        printResult(xk, iterations, System.nanoTime() - start);
+    }
 
+    public static void secantMethod(double a, double b, double precision) {
+        long start = System.nanoTime();
+        int iterations = 0;
+        double x0 = a, x1 = b;
+        double xk;
+
+        while (abs(equation(x1)) > precision) {
+            iterations++;
+            xk = x1 - secantEquation(x0, x1) * equation(x1);
+            x0 = x1;
+            x1 = xk;
+        }
+
+        printResult(x1, iterations, System.nanoTime() - start);
     }
 }

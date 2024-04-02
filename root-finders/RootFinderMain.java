@@ -9,5 +9,8 @@ public class RootFinderMain {
 
         System.out.println("\nnewton method:");
         RootFinderMethods.newtonMethod(1, 10e-10);
+
+        System.out.println("\nsecant method:");
+        RootFinderMethods.secantMethod(0, 1, 10e-10);
     }
 }
