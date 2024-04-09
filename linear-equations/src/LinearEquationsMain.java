@@ -1,4 +1,5 @@
 public class LinearEquationsMain {
+
     public static void main(String[] args) {
 
         System.out.println("gaussian elimination method");
