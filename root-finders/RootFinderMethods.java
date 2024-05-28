@@ -13,11 +13,12 @@ public class RootFinderMethods {
      * @param elapsedTime The time taken by the method to find the root.
      */
     private static void printResult(double result, int iterations, long elapsedTime) {
-        System.out.printf("iterations: %d\nresult: %.10f\nelapsed time: %d ns\n", iterations, result, elapsedTime);
+        System.out.printf("iterations: %d\nresult: %.16f\nelapsed time: %d ns\n", iterations, result, elapsedTime);
     }
 
     private static double equation(double x) {
-        return exp(x) * sin(x) - 1;
+        return exp(-0.1*x)+ x*x - 10;
+//        return exp(x) * sin(x) - 1;
         // return exp(x) - 2 * cos(x);
     }
 
@@ -116,9 +117,7 @@ public class RootFinderMethods {
     public static void newtonMethod(double x0, double precision) {
         long start = System.nanoTime();
         int iterations = 0;
-        double fx0 = equation(x0), dfx0 = derivative(x0);
-        double xk = x0 - fx0 / dfx0;
-        double fxk = equation(xk);
+        double xk = x0;
         while (abs(equation(xk)) > precision) {
             iterations++;
             xk = xk - equation(xk) / derivative(xk);

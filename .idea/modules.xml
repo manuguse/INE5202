@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/calculo-numerico.iml" filepath="$PROJECT_DIR$/calculo-numerico.iml" />
       <module fileurl="file://$PROJECT_DIR$/linear-equations/linear-equations.iml" filepath="$PROJECT_DIR$/linear-equations/linear-equations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/non-linear-equations/non-linear-equations.iml" filepath="$PROJECT_DIR$/non-linear-equations/non-linear-equations.iml" />
     </modules>
   </component>
 </project>

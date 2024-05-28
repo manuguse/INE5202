@@ -30,6 +30,17 @@ public class Utils {
         return iterations;
     }
 
+    public static double[] retroactiveReplacement(double[][] matrix, double[] b, int n) {
+        for (int i = n - 1; i >= 0; i--) {
+            double sum = 0;
+            for (int j = i + 1; j < n; j++) {
+                sum += matrix[i][j] * b[j];
+            }
+            b[i] = (b[i] - sum) / matrix[i][i];
+        }
+        return b;
+    }
+
     public static void eliminateRow(double[][] matrix, double[] b, int n, int i, int j) {
         double m = matrix[j][i] / matrix[i][i];
         for (int k = i; k < n; k++) {
