@@ -8,3 +8,12 @@
 /dataSources.local.xml
 # GitHub Copilot persisted chat sessions
 /copilot/chatSessions
+
+/workspace.xml
+/.idea/workspace.xml
+/.idea/httpRequests/
+/.idea/dataSources/
+/.venv/
+/.pytest_cache/
+/.mypy_cache/
+/.idea/dataSources.local.xml

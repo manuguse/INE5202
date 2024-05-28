@@ -1,10 +1,23 @@
 import numpy as np
 
 class PolynomialInterpolation:
+    """
+    classe com métodos para interpolação polinomial.
+    """
+
     def __init__(self) -> None:
         pass
     
-    def linear_interpolation(self, xi:list, yi:list, k:float, n=None) -> None:
+    def linear_interpolation(self, xi:list, yi:list, k:float, n:int=None) -> None:
+        """
+        gera a interpolação linear para um dado valor de x.
+
+        parametros:
+            xi (list): lista de coordenadas x.
+            yi (list): lista de coordenadas y.
+            k (float): o valor a ser interpolado.
+            n (int, optional): o número de pontos de dados a serem considerados. padrão é None.
+        """
         
         n = (n if n else len(xi))
         V = np.zeros((n, n))
@@ -21,7 +34,17 @@ class PolynomialInterpolation:
 
         print(f"linear para x = {k}: {p}\n")
         
-    def lagrange_interpolation(self, xi:list, yi:list, k:float, n=None) -> None:
+        
+    def lagrange_interpolation(self, xi:list, yi:list, k:float, n:int=None) -> None:
+        """
+        gera a interpolação de lagrange para um dado valor de x.
+        
+        parametros:
+            xi (list): lista de coordenadas x.
+            yi (list): lista de coordenadas y.
+            k (float): o valor a ser interpolado.
+            n (int, optional): o número de pontos de dados a serem considerados. padrão é None.
+        """
         
         n = (n if n else len(xi))
         px = 0.0
@@ -34,8 +57,18 @@ class PolynomialInterpolation:
             px += term
         print(f"lagrange para x = {k}: {px}\n")
 
+
     
-    def newton_divided_differences_interpolation(self, xi:list, yi:list, k:float, n=None) -> None:
+    def newton_divided_differences_interpolation(self, xi:list, yi:list, k:float, n:int=None) -> None:
+        """
+        gera a interpolação de newton para um dado valor de x.
+        
+        parametros:
+            xi (list): lista de coordenadas x.
+            yi (list): lista de coordenadas y.
+            k (float): o valor a ser interpolado.
+            n (int, optional): o número de pontos de dados a serem considerados. padrão é None.
+        """
         
         n = (n if n else len(xi))
         result = 0.0
